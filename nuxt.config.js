@@ -27,7 +27,10 @@ export default {
   plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: [
+    { path: '~/components', extensions: ['vue'] },
+    { path: '~/components/welcome', extensions: ['vue'] },
+  ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -39,6 +42,27 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyDsAKctj4d_GHrHIlTw4VdMVUv-IwWrlzY",
+          authDomain: "oga-outsourcing.firebaseapp.com",
+          projectId: "oga-outsourcing",
+          storageBucket: "oga-outsourcing.appspot.com",
+          messagingSenderId: "106625889605",
+          appId: "1:106625889605:web:fb517a8869727d3d303a2c",
+          measurementId: "G-6G3NQ9009G"
+        },
+        services: {
+          auth: {
+            initialize: {
+              onAuthStateChangedMutation: "ON_AUTH_STATE_CHANGED_MUTATION",
+            },
+          },
+        }
+      }
+    ]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -51,7 +75,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
