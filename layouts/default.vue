@@ -23,15 +23,21 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar :clipped-left="clipped" fixed app dark src="https://picsum.photos/1920/1080?random">
+      <template v-slot:img="{ props }">
+        <v-img
+          v-bind="props"
+          gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+        ></v-img>
+      </template>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn icon @click.stop="clipped = !clipped">
         <v-icon>mdi-application</v-icon>
       </v-btn>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title class="font-weight-bold">{{ title }}</v-toolbar-title>
       <v-spacer />
       <label class="pr-3 font-weight-bold">{{ currentUser.displayName }}</label>
-      <v-btn color="primary" outlined @click.stop="logout">
+      <v-btn color="white" dark outlined @click.stop="logout">
         <v-icon>mdi-logout</v-icon>
         ログアウト
       </v-btn>
@@ -49,7 +55,7 @@ export default {
   name: 'DefaultLayout',
   data() {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       items: [
         {
@@ -59,8 +65,8 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          title: 'Cloud Worker',
+          to: '/cloundworkers',
         },
       ],
       right: true,
