@@ -83,6 +83,7 @@ export default {
   height: auto;
   text-align: center;
   padding: 10px;
+  position: relative;
 }
 .worker-img {
   border: 3px #621e0e dotted;

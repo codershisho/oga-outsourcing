@@ -44,6 +44,7 @@
     </v-app-bar>
     <v-main>
       <v-container>
+        <background />
         <Nuxt />
       </v-container>
     </v-main>
@@ -51,7 +52,9 @@
 </template>
 
 <script>
+import Background from '~/components/background/Background.vue';
 export default {
+  components: { Background },
   name: 'DefaultLayout',
   data() {
     return {
