@@ -8,6 +8,10 @@
 export default {
   layout({store}) {
     return !store.state.user ? 'welcome' : 'default';
+  },
+
+  created() {
+    this.$router.push('/dashboard');
   }
 }
 </script>

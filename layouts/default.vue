@@ -5,6 +5,7 @@
       :clipped="clipped"
       fixed
       app
+      class="navi-backgroud-gradient"
     >
       <v-list>
         <v-list-item
@@ -15,10 +16,10 @@
           exact
         >
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon class="white--text">{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title class="navi-item-title">{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -34,7 +35,7 @@
       <v-btn icon @click.stop="clipped = !clipped">
         <v-icon>mdi-application</v-icon>
       </v-btn>
-      <v-toolbar-title class="font-weight-bold">{{ title }}</v-toolbar-title>
+      <v-toolbar-title class="font-weight-bold" style="letter-spacing: 1.15px;">{{ title }}</v-toolbar-title>
       <v-spacer />
       <label class="pr-3 font-weight-bold">{{ currentUser.displayName }}</label>
       <v-btn color="white" dark outlined @click.stop="logout">
@@ -42,9 +43,9 @@
         ログアウト
       </v-btn>
     </v-app-bar>
-    <v-main>
+    <v-main class="back">
       <v-container>
-        <background />
+        <!-- <background /> -->
         <Nuxt />
       </v-container>
     </v-main>
@@ -59,17 +60,22 @@ export default {
   data() {
     return {
       clipped: true,
-      drawer: false,
+      drawer: true,
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
+          title: 'Dashboard',
+          to: '/dashboard',
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'Cloud Worker',
           to: '/cloundworkers',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'New Worker',
+          to: '/newworkers',
         },
       ],
       right: true,
@@ -91,3 +97,15 @@ export default {
   }
 }
 </script>
+<style>
+.navi-backgroud-gradient {
+  background-image: linear-gradient(0deg, rgba(105, 156, 153, 1) 2%, rgba(55, 159, 87, 1) 86%);
+}
+.navi-item-title {
+  letter-spacing: 1.15px;
+  color: white;
+}
+.v-application {
+ font-family: 'Noto Sans JP', sans-serif !important;
+}
+</style>

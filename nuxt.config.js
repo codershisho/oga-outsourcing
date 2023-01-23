@@ -17,7 +17,11 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;500;700&display=swap' }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -32,6 +36,7 @@ export default {
   components: [
     { path: '~/components', extensions: ['vue'] },
     { path: '~/components/welcome', extensions: ['vue'] },
+    { path: '~/components/dashboard', extensions: ['vue'] },
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -87,13 +92,23 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
+          back: '#ebebeb',
         },
+        light: {
+          back: '#ebebeb',
+        }
       },
+      options: { customProperties: true },
     },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    parallel: true,
+    cache: true,
+    hardSource: true,
+  },
+
   generate: {
     dir: 'public'
   }
